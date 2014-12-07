@@ -9,7 +9,7 @@
 !function_exists('cdstr') && exit('Forbidden');
 $Global['m_dbserver'] = '120.24.72.98'; //服务器ip
 $Global['m_dbuser'] = 'root'; //数据库用户名
-$Global['m_dbpass'] = 'Hwy13916671001'; //数据库密码
+$Global['m_dbpass'] = 'Aileyou520com'; //数据库密码
 $Global['m_dbname'] = 'lovewrzcnet'; //数据库名
 /**
  * 数据库类

@@ -46,12 +46,14 @@
 			<li <?php echo $nav6; ?>>
 				<a href="<?php echo $Global['www_2domain']; ?>/dating">约会</a>
 			</li>
-			<li <?php echo $nav7; ?>>
-				<a href="<?php echo $Global['www_2domain']; ?>/user/online.php">聊天</a>
+			<!-- 
+			<li <?php //echo $nav7; ?>>
+				<a href="<?php //echo $Global['www_2domain']; ?>/user/online.php">聊天</a>
 			</li>
-			<li <?php echo $nav8; ?>>
-				<a href="<?php echo $Global['www_2domain']; ?>/video">视频</a>
+			<li <?php //echo $nav8; ?>>
+				<a href="<?php //echo $Global['www_2domain']; ?>/video">视频</a>
 			</li>
+			 -->
 			<li <?php echo $nav9; ?>>
 				<a href="<?php echo $Global['www_2domain']; ?>/diary">博客</a>
 			</li>

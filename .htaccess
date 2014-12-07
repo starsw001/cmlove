@@ -1,0 +1,40 @@
+RewriteEngine on   
+#RewriteBase / 
+RewriteRule ^(.*)ask/ask(\d+)\.html\?*(.*)$ $1ask/detail\.php\?aid=$2
+
+RewriteRule ^(.*)group/(\d+) /group/groupmain\.php\?mainid=$2
+RewriteRule ^(.*)group/party(\d+)\.html\?*(.*)$ $1group/party\.php\?mainid=$2
+RewriteRule ^(.*)group/article(\d+)\.html\?*(.*)$ $1group/article\.php\?mainid=$2
+RewriteRule ^(.*)group/photo(\d+)\.html\?*(.*)$ $1group/photo\.php\?mainid=$2
+RewriteRule ^(.*)group/user(\d+)\.html\?*(.*)$ $1group/user\.php\?mainid=$2
+RewriteRule ^(.*)group/post(\d+)\.html\?*(.*)$ $1group/post\.php\?mainid=$2
+RewriteRule ^(.*)group/read(\d+)\.html\?*(.*)$ $1group/read\.php\?fid=$2
+RewriteRule ^(.*)group/partyshow(\d+)\.html\?*(.*)$ $1group/partyshow\.php\?fid=$2
+
+RewriteRule ^(.*)home/(\d+)\?*(.*)$ $1home/main\.php\?uid=$2
+RewriteRule ^(.*)home/myarchive(\d+)\.html\?*(.*)$ $1home/myarchive\.php\?uid=$2
+RewriteRule ^(.*)home/myvideo(\d+)\.html\?*(.*)$ $1home/myvideo\.php\?uid=$2
+RewriteRule ^(.*)home/myphoto(\d+)\.html\?*(.*)$ $1home/myphoto\.php\?uid=$2
+RewriteRule ^(.*)home/mydiary(\d+)\.html\?*(.*)$ $1home/mydiary\.php\?uid=$2
+RewriteRule ^(.*)home/myask(\d+)\.html\?*(.*)$ $1home/myask\.php\?uid=$2
+RewriteRule ^(.*)home/mydating(\d+)\.html\?*(.*)$ $1home/mydating\.php\?uid=$2
+RewriteRule ^(.*)home/myfriend(\d+)\.html\?*(.*)$ $1home/myfriend\.php\?uid=$2
+RewriteRule ^(.*)home/mybbs(\d+)\.html\?*(.*)$ $1home/mybbs\.php\?uid=$2
+RewriteRule ^(.*)home/mycontact(\d+)\.html\?*(.*)$ $1home/mycontact\.php\?uid=$2
+RewriteRule ^(.*)home/v(\d+)\.html\?*(.*)$ $1home/v\.php\?fid=$2
+RewriteRule ^(.*)homep(\d+)\.html\?*(.*)$ $1home/p\.php\?fid=$2
+RewriteRule ^(.*)home/diary(\d+)\.html\?*(.*)$ $1home/diary\.php\?fid=$2
+RewriteRule ^(.*)home/ask(\d+)\.html\?*(.*)$ $1home/ask\.php\?fid=$2
+RewriteRule ^(.*)home/dating(\d+)\.html\?*(.*)$ $1home/dating\.php\?fid=$2
+RewriteRule ^(.*)home/p(\d+)\.html$ home/p.php?act=$1&fid=$2&uid=$3
+
+RewriteRule ^(.*)chat/(\d+)\.html\?*(.*)$ $1chat/index\.php\?uid=$2
+RewriteRule ^(.*)chat/chksend(\d+)\.html\?*(.*)$ $1chat/chksend\.php\?uid=$2
+
+
+RewriteRule ^(.*)bidderuser(\d+)\.html\?*(.*)$ $1bidderuser\.php\?uid=$2
+RewriteRule ^(.*)biddergroup(\d+)\.html\?*(.*)$ $1biddergroup\.php\?mainid=$2
+RewriteRule ^(.*)bidderdating(\d+)\.html\?*(.*)$ $1bidderdating\.php\?did=$2
+RewriteRule ^(.*)clinic/detail(\d+)\.html\?*(.*)$ $1clinic/detail\.php\?fid=$2
+RewriteRule ^(.*)story/detail(\d+)\.html\?*(.*)$ $1story/detail\.php\?fid=$2
+RewriteRule ^(.*)news(\d+)\.html\?*(.*)$ $1newsshow\.php\?id=$2
