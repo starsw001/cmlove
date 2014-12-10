@@ -1,7 +1,20 @@
 <?php require_once '../sub/init.php';
 //
 require_once wrzc_net.'sub/conn.php';
-if ( !ereg("^[0-9]{1,8}$",$cook_userid) || empty($cook_userid)){header("Location: ".$Global['www_2domain']."/login.php");exit;} else {$cook_password = trim($cook_password);$rt = $db->query("SELECT grade FROM ".__TBL_MAIN__." WHERE id='$cook_userid' AND password='$cook_password' AND flag>0");if ($db->num_rows($rt)) {$row = $db->fetch_array($rt);$data_grade=$row[0];} else {header("Location: ".$Global['www_2domain']."/login.php");exit;}}
+if ( !ereg("^[0-9]{1,8}$",$cook_userid) || empty($cook_userid)){
+	header("Location: ".$Global['www_2domain']."/login.php");exit;
+} 
+else {
+	$cook_password = trim($cook_password);
+	$rt = $db->query("SELECT grade FROM ".__TBL_MAIN__." WHERE id='$cook_userid' AND password='$cook_password' AND flag>0");
+	if ($db->num_rows($rt)) {
+		$row = $db->fetch_array($rt);
+		$data_grade=$row[0];
+	} 
+	else {
+		header("Location: ".$Global['www_2domain']."/login.php");exit;
+	}
+}
 //
 $rtt = $db->query("SELECT COUNT(*) FROM ".__TBL_PHOTO__." WHERE userid=".$cook_userid);
 $rowss = $db->fetch_array($rtt);
@@ -16,33 +29,38 @@ if ($data_grade ==1 ) {
 }
 if ($submitok == "upload"){
 	$uptypes=array('image/jpg','image/jpeg','image/png','image/pjpeg','image/gif','image/x-png'); 
-	$max_file_size=900000;
+	$max_file_size=5242880;//5M =1024*1024*5=542880
 	$watermark=1; //(1加,其他不加); 
 	$watertype=2; //(1字,2图) 
 	$waterstring = $Global['m_waterimg'];
 	$waterimg = 'images/waterimg.png';
 	if ($_SERVER['REQUEST_METHOD'] == 'POST' && is_uploaded_file($_FILES["pic"][tmp_name])){ 
 		$file = $_FILES["pic".$i];
-		if($max_file_size < $file["size"])callmsg("照片太大，不得超过900K，请检查!","-1");
-		if(!in_array($file["type"], $uptypes))callmsg("照片类型不符，只能是.jpg或.gif格式，请检查1","-1");
+		if($max_file_size < $file["size"])callmsg("照片太大，不得超过5M，请检查!","-1");
+		if(!in_array($file["type"], $uptypes))callmsg("照片类型不符，只能是.jpg或.png或.gif格式，请检查1","-1");
 		$iinfo1=getimagesize($file[tmp_name],$iinfo1); 
 		switch ($iinfo1[2]) { 
 			case 1:$simage =imagecreatefromgif($file[tmp_name]);break; 
 			case 2:$simage =imagecreatefromjpeg($file[tmp_name]);break; 
 			case 3:$simage =imagecreatefrompng($file[tmp_name]);break; 
 			case 6:$simage =imagecreatefromwbmp($file[tmp_name]);break; 
-		} 
+		}
 	}
 	if ($_SERVER['REQUEST_METHOD'] == 'POST' && is_uploaded_file($_FILES["pic"][tmp_name])){ 
 		$file = $_FILES["pic"];
 		$filepath = wrzc_net."up/photo/".date("y")."/".date("md")."/";
 		$dbpath = date("y")."/".date("md")."/";
-		mkpath($filepath);
+		$dymd = date("md");
+		$d = !is_dir($dymd);
+		if ( !is_dir($dymd) ) {
+			mkdir($dymd, 0777);
+		}
+// 		mkpath($filepath);//创建上传的图片目录
 		$savename = $cook_userid."_".cdstr(20).".";
-		$filename=$file["tmp_name"];
+		$filename = $file["tmp_name"];//上传的临时文件目录
 		$image_size = getimagesize($filename); 
-		$pinfo=pathinfo($file["name"]); 
-		$ftype=$pinfo['extension']; 
+		$pinfo = pathinfo($file["name"]); 
+		$ftype = $pinfo['extension']; 
 		$destination =  $filepath."b_".$savename.$ftype; 
 		if(!move_uploaded_file ($filename, $destination)) callmsg("移动照片出错","-1");
 		$path_s = $dbpath."s_".$savename.$ftype;
@@ -106,25 +124,23 @@ if ($submitok == "upload"){
 		//大图水结束
 		$addtime = date("Y-m-d H:i:s");
 		$db->query("INSERT INTO ".__TBL_PHOTO__."  (userid,path_s,path_b,title,addtime) VALUES ('$cook_userid','$path_s','$path_b','$title','$addtime')");
-//
-	$tmpid = $db->insert_id();
-	$rt = $db->query("SELECT a.userid,b.grade,b.if2 FROM ".__TBL_FRIEND__." a,".__TBL_MAIN__." b WHERE a.senduserid=".$cook_userid." AND a.userid=b.id AND a.ifagree=1 AND b.grade>=3");
-	$total = $db->num_rows($rt);
-	if ($total > 0 ) {
-		for($i=0;$i<$total;$i++) {
-			$rows = $db->fetch_array($rt);
-			if(!$rows) break;
-			$uid = $rows[0];
-			$ugrade =  $rows[1];
-			$uif2 =  $rows[2];
-			if ( ($uif2 == 2 || $uif2 == 3 || $uif2 == 4) && $ugrade >= 3 ){
-				$content = "上传了一张照片<a href=".$Global['up_2domain']."/photo/".$path_b." target=_blank  class=uDF2C91><img src=".$Global['up_2domain']."/photo/".$path_s." width=40 height=30 align=absmiddle hspace=5>点击查看</a>";
-				$addtime = strtotime("now");
-				$db->query("INSERT INTO ".__TBL_FRIEND_NEWS__."  (userid,senduserid,content,addtime) VALUES ($uid,$cook_userid,'$content',$addtime)");
+		$tmpid = $db->insert_id();
+		$rt = $db->query("SELECT a.userid,b.grade,b.if2 FROM ".__TBL_FRIEND__." a,".__TBL_MAIN__." b WHERE a.senduserid=".$cook_userid." AND a.userid=b.id AND a.ifagree=1 AND b.grade>=3");
+		$total = $db->num_rows($rt);
+		if ($total > 0 ) {
+			for($i=0;$i<$total;$i++) {
+				$rows = $db->fetch_array($rt);
+				if(!$rows) break;
+				$uid = $rows[0];
+				$ugrade =  $rows[1];
+				$uif2 =  $rows[2];
+				if ( ($uif2 == 2 || $uif2 == 3 || $uif2 == 4) && $ugrade >= 3 ){
+					$content = "上传了一张照片<a href=".$Global['up_2domain']."/photo/".$path_b." target=_blank  class=uDF2C91><img src=".$Global['up_2domain']."/photo/".$path_s." width=40 height=30 align=absmiddle hspace=5>点击查看</a>";
+					$addtime = strtotime("now");
+					$db->query("INSERT INTO ".__TBL_FRIEND_NEWS__."  (userid,senduserid,content,addtime) VALUES ($uid,$cook_userid,'$content',$addtime)");
+				}
 			}
 		}
-	}
-//
 	}//upload end
 	callmsg("上传成功！请等待客服审核，通过后方可设置形象照和在个人主页显示。","c_photo_list.php");
 }
@@ -175,7 +191,7 @@ table{border-collapse:collapse;border-spacing:0;}
 <?php } else { ?>
     <table width="540" border="0" align="center" cellpadding="3" cellspacing="0" style="border:#dddddd 0px solid;">
 	<script language="javascript" src="images/chkphoto.js"></script>
-      <form action="c_photo_up.php" method="post" enctype="multipart/form-data" name="up" id="up" onsubmit="return showtype()">
+      <form action="c_photo_up.php" method="post" enctype="multipart/form-data" name="up" id="up" onsubmit="return showtype();">
 
         <tr>
           <td width="133" height="40" align="right" style="font-size:10.3pt;color:#666">照片说明：</td>
@@ -210,41 +226,49 @@ table{border-collapse:collapse;border-spacing:0;}
   </div></div>
 <?php require_once wrzc_net.'my/bottommy.php';
 function makexiao($im,$maxwidth,$maxheight,$name,$ftype){
-$width = imagesx($im);
-$height = imagesy($im);
-if(($maxwidth && $width > $maxwidth) || ($maxheight && $height > $maxheight)){
-if($maxwidth && $width > $maxwidth){
-$widthratio = $maxwidth/$width;
-$RESIZEWIDTH=true;}
-if($maxheight && $height > $maxheight){
-$heightratio = $maxheight/$height;
-$RESIZEHEIGHT=true;}
-if($RESIZEWIDTH && $RESIZEHEIGHT){
-if($widthratio < $heightratio){
-$ratio = $widthratio;
-}else{
-$ratio = $heightratio;}
-}elseif($RESIZEWIDTH){
-$ratio = $widthratio;
-}elseif($RESIZEHEIGHT){
-$ratio = $heightratio;}
-$newwidth = $width * $ratio;
-$newheight = $height * $ratio;
-if(function_exists("imagecopyresampled")){
-$newim = imagecreatetruecolor($newwidth, $newheight);
-imagecopyresampled($newim, $im, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
-}else{
-$newim = imagecreate($newwidth, $newheight);
-imagecopyresized($newim, $im, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);}
-if ($ftype == "jpg" || $ftype == "JPG"){
-imagejpeg($newim,$name);
-} else {
-imagegif($newim,$name);}	
-imagedestroy ($newim);
-}else{
-if ($ftype == "jpg" || $ftype == "JPG"){
-imagejpeg ($im,$name);
-} else {
-imagegif($im,$name);}	
-imagedestroy ($im);}}
+	$width = imagesx($im);
+	$height = imagesy($im);
+	if(($maxwidth && $width > $maxwidth) || ($maxheight && $height > $maxheight)){
+		if($maxwidth && $width > $maxwidth){
+			$widthratio = $maxwidth/$width;
+			$RESIZEWIDTH=true;
+		}
+		if($maxheight && $height > $maxheight){
+			$heightratio = $maxheight/$height;
+			$RESIZEHEIGHT=true;
+		}
+		if($RESIZEWIDTH && $RESIZEHEIGHT){
+			if($widthratio < $heightratio){
+				$ratio = $widthratio;
+			}else{
+				$ratio = $heightratio;
+			}
+		}elseif($RESIZEWIDTH){
+			$ratio = $widthratio;
+		}elseif($RESIZEHEIGHT){
+			$ratio = $heightratio;
+		}
+		$newwidth = $width * $ratio;
+		$newheight = $height * $ratio;
+		if(function_exists("imagecopyresampled")){
+			$newim = imagecreatetruecolor($newwidth, $newheight);
+			imagecopyresampled($newim, $im, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+		}else{
+			$newim = imagecreate($newwidth, $newheight);
+			imagecopyresized($newim, $im, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+		}
+		if ($ftype == "jpg" || $ftype == "JPG"){
+			imagejpeg($newim,$name);
+		}else{
+			imagegif($newim,$name);}	
+			imagedestroy ($newim);
+		}else{
+			if ($ftype == "jpg" || $ftype == "JPG"){
+				imagejpeg ($im,$name);
+			}else {
+				imagegif($im,$name);
+			}	
+			imagedestroy ($im);
+		}
+	}
 ?>

@@ -4,7 +4,7 @@ if ( !ereg("^[0-9]{1,8}$",$mainid) && !empty($mainid))callmsg("ÇëÇó´íÎó£¬¸ÃÈ¦×Ó²
 if ( !ereg("^[0-9]{1,8}$",$fid) || empty($fid))callmsg("ÇëÇó´íÎó£¬¸ÃĞÅÏ¢²»´æÔÚ»òÒÑ±»É¾³ı£¡","-1");
 require_once wrzc_net.'sub/conn.php';
 if ($submitok == "addupdate" || $submitok == "bmupdate") {
-	if ( (strlen($content)>30000 || strlen($content)<1) && ($submitok == "addupdate") )callmsg("»î¶¯ÁôÑÔ¹ı¶à»ò¹ıÉÙ£¬Çë¿ØÖÆÔÚ1~20000×Ö½ÚÒÔÄÚ","-1");
+	if ( (strlen($content)>30000 || strlen($content)<1) && ($submitok == "addupdate") )callmsg("ÂÃÓÎÏßÂ·ÁôÑÔ¹ı¶à»ò¹ıÉÙ£¬Çë¿ØÖÆÔÚ1~20000×Ö½ÚÒÔÄÚ","-1");
 	if ( (strlen($tel)>200 || strlen($tel)<8) && ($submitok == "bmupdate") )callmsg("ÇëÁôÏÂÄãµÄÊÖ»ú£¯µç»°","bm.php?mainid=".$mainid."&fid=".$fid."&mbkind=".$mbkind);
 	if ( !ereg("^[0-9]{1,8}$",$cook_userid) || empty($cook_userid)){header("Location: ".$Global['www_2domain']."/login.php");exit;}
 	$rt = $db->query("SELECT nickname,sex,grade,photo_s FROM ".__TBL_MAIN__." WHERE id='$cook_userid' AND password='$cook_password' AND flag>0");
@@ -37,7 +37,7 @@ if ($submitok == "addupdate" || $submitok == "bmupdate") {
 			$db->query("INSERT INTO ".__TBL_GROUP_CLUB_USER__." (mainid,clubid,addtime,userid,nicknamesexgradephoto_s,tel) VALUES ('$mainid','$fid','$addtime','$cook_userid','$nicknamesexgradephoto_s','$tel')");
 			$db->query("UPDATE ".__TBL_GROUP_CLUB__." SET bmnum=bmnum+1 WHERE id=".$fid);
 		} else {
-			callmsg("±¾»î¶¯ÒÑ½ØÖ¹±¨Ãû!","-1");
+			callmsg("±¾ÂÃÓÎÏßÂ·ÒÑ½ØÖ¹±¨Ãû!","-1");
 		}
 		callmsg("±¨Ãû³É¹¦!","partyshow".$fid.".html");
 		//header("Location: partyshow".$fid.".html");
@@ -114,7 +114,7 @@ $db->query("UPDATE ".__TBL_GROUP_CLUB__." SET click=click+1 WHERE id=".$fid);
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <title><?php echo $title; ?>_<?php echo $address; ?></title>
 <meta name="keywords" content="<?php echo $title; ?>,<?php echo $address; ?>,<?php echo $nickname; ?>" />
-<meta name="description" content="<?php echo $nickname; ?>ÔÚ<?php echo $maintitle; ?>,·¢²¼ÁË»î¶¯¾Û»á:<?php echo $title; ?>" />
+<meta name="description" content="<?php echo $nickname; ?>ÔÚ<?php echo $maintitle; ?>,·¢²¼ÁËÂÃÓÎÏßÂ·¾Û»á:<?php echo $title; ?>" />
 <link href="images/<?php echo $mbkind; ?>/group.css" rel="stylesheet" type="text/css">
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
 </head>
@@ -125,7 +125,7 @@ if (document.all){
 var clipBoardContent="";
 clipBoardContent+="¿ìÀ´²Î¼ÓPartyÍøÓÑ¾Û»á£¡";
 clipBoardContent+="\n";
-clipBoardContent+="¡¡»î¶¯Ãû³Æ£º<?php echo $title; ?>";
+clipBoardContent+="¡¡ÂÃÓÎÏßÂ·Ãû³Æ£º<?php echo $title; ?>";
 clipBoardContent+="\n";
 clipBoardContent+="¡¡ÍøÉÏ±¨ÃûµØÖ·£º<?php echo $Global['group_2domain']; ?>/partyshow<?php echo $fid; ?>.html";
 window.clipboardData.setData("Text",clipBoardContent);
@@ -151,7 +151,7 @@ alert("¸´ÖÆ³É¹¦£¡Äã¿ÉÒÔÊ¹ÓÃÕ³Ìù»ò(Ctrl+V)¹¦ÄÜÓëÆäËûºÃÓÑÒ»Í¬·ÖÏí£¡");
 <td width="104" align="center" background="images/<?php echo $mbkind; ?>/2.gif" style="padding-top:5px;"><a href="<?php echo $Global['www_2domain'];?>" class="title">½»ÓÑÊ×Ò³</a></td>
 <td width="104" align="center" background="images/<?php echo $mbkind; ?>/2.gif" style="padding-top:5px;"><a href="<?php echo $mainid; ?>" class=title>È¦×ÓÊ×Ò³</a></td>
 <td width="104" align="center" background="images/<?php echo $mbkind; ?>/2.gif" style="padding-top:5px;"><a href="article<?php echo $mainid; ?>.html" class="title">È¦ÄÚ»°Ìâ</a></td>
-<td width="104" align="center" background="images/<?php echo $mbkind; ?>/3.gif" style="padding-top:5px;"><a href="party<?php echo $mainid; ?>.html" class="titleselected">»î¶¯¾Û»á</a></td>
+<td width="104" align="center" background="images/<?php echo $mbkind; ?>/3.gif" style="padding-top:5px;"><a href="party<?php echo $mainid; ?>.html" class="titleselected">½»ÓÑÂÃÓÎ</a></td>
 <td width="104" align="center" background="images/<?php echo $mbkind; ?>/2.gif" style="padding-top:5px;"><a href="photo<?php echo $mainid; ?>.html" class="title">È¦×ÓÏà²á</a></td>
 <td width="104" align="center" background="images/<?php echo $mbkind; ?>/2.gif" style="padding-top:5px;"><a href="user<?php echo $mainid; ?>.html" class="title">È¦×Ó³ÉÔ±</a></td>
 <td width="104" align="center" background="images/<?php echo $mbkind; ?>/2.gif" style="padding-top:5px;"><a href="<?php echo $Global['my_2domain']."/?i_group_invite.php?mainid=".$mainid;?>" class="title">ÑûÇëËûÈË</a></td>
@@ -167,10 +167,13 @@ alert("¸´ÖÆ³É¹¦£¡Äã¿ÉÒÔÊ¹ÓÃÕ³Ìù»ò(Ctrl+V)¹¦ÄÜÓëÆäËûºÃÓÑÒ»Í¬·ÖÏí£¡");
 <tr>
 <td height="23" background="images/<?php echo $mbkind; ?>/5.gif" style="border-left:#ffffff 2px solid;border-right:#ffffff 2px solid;"><table width="100%" height="23" border="0" cellpadding="0" cellspacing="0">
   <tr>
-    <td width="71%" style="padding-top:3px;"><img src="images/<?php echo $mbkind; ?>/li.gif" width="5" height="15" hspace="5" align="absmiddle"> <font color="#FFFFFF"><b><?php echo "<a href=".$Global['group_2domain']."/".$mainid." class=title>".$maintitle."</a>"; ?>
-<?php
-echo " >> "."<a href=party".$mainid.".html class=title>¾ãÀÖ²¿»î¶¯</a> >> </b>"."<a href=partyshow".$fid.".html class=title>".$title."</a>";
-?></font></td>
+    <td width="71%" style="padding-top:3px;">
+    	<img src="images/<?php echo $mbkind; ?>/li.gif" width="5" height="15" hspace="5" align="absmiddle" />
+    		<font color="#FFFFFF"><b><?php echo "<a href=".$Global['group_2domain']."/".$mainid." class=title>".$maintitle."</a>"; ?>
+			<?php
+			echo " >> "."<a href=party".$mainid.".html class=title>¾ãÀÖ²¿ÂÃÓÎÏßÂ·</a> >> </b>"."<a href=partyshow".$fid.".html class=title>".$title."</a>";
+			?></font>
+	</td>
     <td width="29%" align="right" valign="bottom" style="padding-bottom:2px;padding-right:8px;"><font class="tiaobgse"><b>>></b><a onclick=recommend() href="####"><font class="yq">¸´ÖÆ±¾ÌûµØÖ·£¬ÈÃºÃÓÑÅãÎÒÒ»Æğ²Î¼Ó¾Û»á£¡</font></a><b><<</b></font></td>
   </tr>
 </table></td>
@@ -200,8 +203,8 @@ if ($flag >2)$totals = -1;
     <table width="99%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td width="438" style="font-size:10.3pt;font-weight:bold;">
-<font class=tiaose >»î¶¯Ãû³Æ£º<img src="images/party.gif" hspace="5"><?php echo $title; ?></font></td>
-<td width="262" align="right">ÈËÆø<font color="#FF0000"><b><?php echo $click; ?></b></font> ´Î¡¡(»î¶¯ÁôÑÔ<font color="#FF0000"><b><?php echo $gbooknum; ?></b></font> Ìõ£¬<a href="#bbs" onClick="javascript:oEditor.focus();"><img src="images/fb.gif" width="13" height="13" hspace="3" border="0" align="absmiddle"><u><font color="#333333"><b>ÎÒÒªÁôÑÔ</b></font></u></a>)</td>
+<font class=tiaose >ÂÃÓÎÏßÂ·Ãû³Æ£º<img src="images/party.gif" hspace="5"><?php echo $title; ?></font></td>
+<td width="262" align="right">ÈËÆø<font color="#FF0000"><b><?php echo $click; ?></b></font> ´Î¡¡(ÁôÑÔ<font color="#FF0000"><b><?php echo $gbooknum; ?></b></font> Ìõ£¬<a href="#party_href" onClick="javascript:oEditor.focus();"><img src="images/fb.gif" width="13" height="13" hspace="3" border="0" align="absmiddle"><u><font color="#333333"><b>ÎÒÒªÁôÑÔ</b></font></u></a>)</td>
       </tr>
     </table></td>
   <td width="224" align="center" background="images/<?php echo $mbkind; ?>/tdbg.gif"  style="border-top:#ffffff 1px solid;border-right:#ffffff 1px solid;">
@@ -239,7 +242,7 @@ switch ($flag){
 		echo "<img src=images/bm.gif> <font color=0066CC>ÕıÔÚ±¨Ãû...</font>";
 	break;
 	case 2:
-		echo '<font color=ff6600>»î¶¯½øĞĞÖĞ</font>';
+		echo '<font color=ff6600>ÂÃÓÎÏßÂ·½øĞĞÖĞ</font>';
 	break;
 	case 3:
 		echo "<font color=349933>Ô²Âú³É¹¦</font>";
@@ -310,7 +313,7 @@ echo '<br>½ØÖ¹±¨ÃûÈÕÆÚµ½£º'.date_format2($jzbmtime,'%Y-%m-%d %H:%M').'¡¡'.getwee
 </table>
 <table width="680" border="0" cellspacing="0" cellpadding="0" style="TABLE-LAYOUT: fixed; WORD-BREAK: break-all;">
 <tr>
-<td class=tdbg2 style="font-size:10.3pt;line-height:200%;"><font class=tiaose ><b>»î¶¯ÏêÏ¸ËµÃ÷</b>£º</font><font color="#000000"><?php echo badstr($content); ?></font></td>
+<td class=tdbg2 style="font-size:10.3pt;line-height:200%;"><font class=tiaose ><b>ÂÃÓÎÏßÂ·ÏêÏ¸ËµÃ÷</b>£º</font><font color="#000000"><?php echo badstr($content); ?></font></td>
 </tr>
 </table>
 <br></td>
@@ -381,9 +384,9 @@ echo "<img src=".$Global['up_2domain']."/photo/".$photo_susr." width=41 height=5
 </table>
 <table width="980" height="30" border="0" align="center" cellpadding="0" cellspacing="1" background="images/bkbg.gif">
   <tr>
-    <td height="31" align="center" valign="bottom" style="padding:8px;"><table width="940" height="30" border="0" cellpadding="0" cellspacing="1" class=tdbg4>
+    <td height="31" align="center" valign="bottom" style="padding:8px;"><table width="940" height="30" border="0" cellpadding="0" cellspacing="1" class=tdbg4 id="party_href">
       <tr>
-        <td height="30" background="images/<?php echo $mbkind; ?>/tdbg.gif" style="padding-left:10px;border-left:#ffffff 1px solid;border-right:#ffffff 1px solid;border-top:#ffffff 1px solid;font-size:10.3pt;"><font class=tiaose ><b>»î¶¯ÕÕÆ¬£º¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡<a href="partyphoto.php?fid=<?php echo $fid; ?>" class=tiaose style="font-size:10.3pt;"><u>¸ü¶àÕÕÆ¬</u></a></b></font></td>
+        <td height="30" background="images/<?php echo $mbkind; ?>/tdbg.gif" style="padding-left:10px;border-left:#ffffff 1px solid;border-right:#ffffff 1px solid;border-top:#ffffff 1px solid;font-size:10.3pt;"><font class=tiaose ><b>ÂÃÓÎÕÕÆ¬£º¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡<a href="partyphoto.php?fid=<?php echo $fid; ?>" class=tiaose style="font-size:10.3pt;"><u>¸ü¶àÕÕÆ¬</u></a></b></font></td>
         </tr>
       <tr>
         <td height="140" align="center" bgcolor="#FFFFFF"><style type="text/css"> 
@@ -450,14 +453,19 @@ mysql_data_seek($rt,($p-1)*$pagesize);
 ?>
 <table width="980" height="30" border="0" align="center" cellpadding="0" cellspacing="1" background="images/bkbg.gif">
   <tr>
-    <td height="31" align="center" valign="bottom"><table width="940" height="30" border="0" cellpadding="0" cellspacing="1" class=tdbg4>
+    <td height="31" align="center" valign="bottom">
+    <!-- ÂÃÓÎÌÖÂÛÁôÑÔ -->
+    <table width="940" height="30" border="0" cellpadding="0" cellspacing="1" class=tdbg4>
         <tr>
           <td width="719" background="images/<?php echo $mbkind; ?>/tdbg.gif" style="padding-left:10px;border-left:#ffffff 1px solid;border-top:#ffffff 1px solid;font-size:10.3pt;"><font class=tiaose >
-<?php echo "<b>»î¶¯½»Á÷£º<a href=".$mainid.".html class=tiaose style=font-size:10.3pt>".$maintitle."</a>";
-echo " >> "."<a href=party".$mainid.".html class=tiaose style=font-size:10.3pt>¾ãÀÖ²¿»î¶¯</a>";
-echo " >> </b><img src=images/qzlist.gif hspace=5><a href=partyshow".$fid.".html class=tiaose style='font-size:10.3pt;'><u>".$title."</u></a>";
+<?php 
+echo "<b>ÂÃÓÎÏßÂ·½»Á÷£º";
+// echo "<b>ÂÃÓÎÏßÂ·½»Á÷£º<a href=".$mainid.".html class=tiaose style=font-size:10.3pt>".$maintitle."</a>";
+// echo " >> "."<a href=party".$mainid.".html class=tiaose style=font-size:10.3pt>ÂÃÓÎÏßÂ·</a>";
+// echo " >> </b><img src=images/qzlist.gif hspace=5><a href=partyshow".$fid.".html class=tiaose style='font-size:10.3pt;'><u>".$title."</u></a>";
+echo " </b><img src=images/qzlist.gif hspace=5><a href=partyshow".$fid.".html class=tiaose style='font-size:10.3pt;'><u>".$title."</u></a>";
 ?></font></td>
-          <td width="218" align="center" background="images/<?php echo $mbkind; ?>/tdbg.gif" style="padding-left:10px;border-top:#ffffff 1px solid;border-right:#ffffff 1px solid;font-size:10.3pt;">(»î¶¯ÁôÑÔ<font color="#FF0000"><?php echo $gbooknum; ?></font> Ìõ£¬<a href="#bbs" onClick="javascript:oEditor.focus();"><img src="images/fb.gif" width="13" height="13" hspace="3" border="0" align="absmiddle"><u><font color="#333333"><b>ÎÒÒªÁôÑÔ</b></font></u></a>)</td>
+          <td width="218" align="center" background="images/<?php echo $mbkind; ?>/tdbg.gif" style="padding-left:10px;border-top:#ffffff 1px solid;border-right:#ffffff 1px solid;font-size:10.3pt;">(ÂÃÓÎ½»Á÷<font color="#FF0000"><?php echo $gbooknum; ?></font> Ìõ£¬<a href="#party_href" onClick="javascript:oEditor.focus();"><img src="images/fb.gif" width="13" height="13" hspace="3" border="0" align="absmiddle"><u><font color="#333333"><b>ÎÒÒªÁôÑÔ</b></font></u></a>)</td>
         </tr>
       </table></td>
   </tr>
@@ -532,7 +540,7 @@ if ($rows['flag'] == 1) {
 <?php } else { ?>
 <table width="980" height="46" border="0" align="center" cellpadding="0" cellspacing="0" background="images/bkbg.gif">
   <tr>
-    <td height="31" align="center" valign="bottom"><font color="#999999" style=font-size:10.3pt;>...ÔİÎŞ»î¶¯ÁôÑÔ...</font> </td>
+    <td height="31" align="center" valign="bottom"><font color="#999999" style=font-size:10.3pt;>...ÔİÎŞÂÃÓÎÏßÂ·ÁôÑÔ...</font> </td>
   </tr>
 </table>
 <?php } ?>
@@ -555,7 +563,7 @@ function chkform(){
 	sContent = clearAllFormat(sContent);
 	document.FORM.content.value = sContent;
 	if(document.FORM.content.value.length<1 || document.FORM.content.value.length>30000){
-	alert('»î¶¯ÁôÑÔÇë¿ØÖÆÔÚ1~20000×Ö½Ú£¡');
+	alert('ÂÃÓÎÏßÂ·ÁôÑÔÇë¿ØÖÆÔÚ1~20000×Ö½Ú£¡');
 	oEditor = document.htmlletter;
 	fContent.focus();
 	return false;
@@ -573,8 +581,10 @@ function chkform(){
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td width="96%" style="font-size:10.3pt;"><font class=tiaose >
-<?php echo "<b>»î¶¯½»Á÷£º<a href=".$Global['group_2domain']."/".$mainid." class=tiaose style=font-size:10.3pt>".$maintitle."</a>";
-echo " >> "."<a href=party".$mainid.".html class=tiaose style=font-size:10.3pt>¾ãÀÖ²¿»î¶¯</a>";
+<?php 
+echo "<b>ÂÃÓÎÏßÂ·½»Á÷£º";
+// echo "<b>ÂÃÓÎÏßÂ·½»Á÷£º<a href=".$Global['group_2domain']."/".$mainid." class=tiaose style=font-size:10.3pt>".$maintitle."</a>";
+echo "<a href=party".$mainid.".html class=tiaose style=font-size:10.3pt>ÂÃÓÎÏßÂ·</a>";
 echo " >> </b><img src=images/party.gif hspace=5>".$title."";
 ?></font></td>
     <td width="4%"><a href="#top" class=tiaose><b>TOP</b></a></td>
@@ -586,10 +596,12 @@ echo " >> </b><img src=images/party.gif hspace=5>".$title."";
           <iframe src="/gyleditor/gyleditor.htm" id="htmlletter" name="htmlletter" style="height:320px; width:90%;" scrolling="no" border="0" frameborder="0" tabindex="3" ></iframe>
           <br>
 <table width="844" height="105" border="0" align="center" cellpadding="0" cellspacing="0">
+<!-- 
 <tr>
 <td width="61" height="60" align="left"><font class=tiaose >ÉÏ´«ÕÕÆ¬£º</font></td>
-<td width="783" align="left"><iframe src="<?php echo $Global['my_2domain'].'/up.php'; ?>" frameborder="0" allowtransparency="true" width="620" height="24" border=0 marginwidth="0" marginheight="0" scroll="no"></iframe></td>
+<td width="783" align="left"><iframe src="<?php //echo $Global['my_2domain'].'/up.php'; ?>" frameborder="0" allowtransparency="true" width="620" height="24" border=0 marginwidth="0" marginheight="0" scroll="no"></iframe></td>
 </tr>
+ -->
 <tr>
 <td height="60" colspan="2" align="center" valign="top"><input type="submit" name="Submit" value=" ¿ªÊ¼ÁôÑÔ " class="button" <?php if ( !ereg("^[0-9]{1,8}$",$cook_userid) || empty($cook_userid)){echo "disabled='disabled'";} ?>></td>
 </tr>

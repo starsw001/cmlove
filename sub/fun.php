@@ -110,17 +110,21 @@ function badstr($str, $to = '*') {
 function mkpath($mkpath, $mode = 0777) {
 	$path_arr = explode ( '/', $mkpath );
 	foreach ( $path_arr as $value ) {
-		if (! empty ( $value )) {
-			if (empty ( $path ))
+		if ( !empty ( $value )) {
+			if (empty ( $path )){
 				$path = $value;
-			else
+			}
+			else{
 				$path .= '/' . $value;
+			}	
 			is_dir ( $path ) or mkdir ( $path, $mode ) or chmod ( $path, $mode );
 		}
 	}
-	if (is_dir ( $mkpath ))
+	if (is_dir ( $mkpath )){
 		return true;
-	return false;
+	}else {	
+		return false;
+	}	
 }
 
 function daddslashes($string, $force = 0) {

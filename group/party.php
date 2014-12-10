@@ -4,34 +4,34 @@ if ( !ereg("^[0-9]{1,8}$",$mainid) || empty($mainid))callmsg("请求错误，该圈子不
 require_once wrzc_net.'sub/conn.php';
 $rt = $db->query("SELECT mbkind,title,userid,nicknamesexgradephoto_s,userid1,userid2,userid3 FROM ".__TBL_GROUP_MAIN__." WHERE id=".$mainid." AND flag=1");
 if($db->num_rows($rt)){
-$row = $db->fetch_array($rt);
-$mbkind = $row['mbkind'];
-$maintitle = stripslashes($row['title']);
-$userid = $row['userid'];
-$nicknamesexgradephoto_s = $row['nicknamesexgradephoto_s'];
-if (!empty($nicknamesexgradephoto_s)){
-$tmpnickname = explode("|",$nicknamesexgradephoto_s);
-$nickname = $tmpnickname[0];
-$sex = $tmpnickname[1];
-$grade = $tmpnickname[2];
-}
-$userid1 = $row['userid1'];
-$userid2 = $row['userid2'];
-$userid3 = $row['userid3'];
-if ($userid == $cook_userid || $userid1 == $cook_userid || $userid2 == $cook_userid || $userid3 == $cook_userid) {
-	$authority_main = "OK";
+	$row = $db->fetch_array($rt);
+	$mbkind = $row['mbkind'];
+	$maintitle = stripslashes($row['title']);
+	$userid = $row['userid'];
+	$nicknamesexgradephoto_s = $row['nicknamesexgradephoto_s'];
+	if (!empty($nicknamesexgradephoto_s)){
+		$tmpnickname = explode("|",$nicknamesexgradephoto_s);
+		$nickname = $tmpnickname[0];
+		$sex = $tmpnickname[1];
+		$grade = $tmpnickname[2];
+	}
+	$userid1 = $row['userid1'];
+	$userid2 = $row['userid2'];
+	$userid3 = $row['userid3'];
+	if ($userid == $cook_userid || $userid1 == $cook_userid || $userid2 == $cook_userid || $userid3 == $cook_userid) {
+		$authority_main = "OK";
+	} else {
+		$authority_main = "NO";
+	}
 } else {
-	$authority_main = "NO";
-}
-} else {
-echo "&nbsp;&nbsp;<font color='#999999' style='font-size: 9pt'>".$Global['m_sitename']."( <a href=".$Global['www_2domain'].">".$Global['www_2domain']."</a> )提示：</FONT><BR><BR>&nbsp;&nbsp;<font color='#FF0000' style='font-size: 9pt'>请求错误，该圈子不存在或已被锁定或已被删除！</FONT><BR><BR><p align=center><input onclick='history.back();' type='button' value='返回'></p>";
-exit;
+	echo "&nbsp;&nbsp;<font color='#999999' style='font-size: 9pt'>".$Global['m_sitename']."( <a href=".$Global['www_2domain'].">".$Global['www_2domain']."</a> )提示：</FONT><BR><BR>&nbsp;&nbsp;<font color='#FF0000' style='font-size: 9pt'>请求错误，该圈子不存在或已被锁定或已被删除！</FONT><BR><BR><p align=center><input onclick='history.back();' type='button' value='返回'></p>";
+	exit;
 }
 ?>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-<title>圈子活动聚会 <?php echo $maintitle; ?></title>
+<title>旅游线路列表 <?php echo $maintitle; ?></title>
 <link href="images/<?php echo $mbkind; ?>/group.css" rel="stylesheet" type="text/css">
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
 </head>
@@ -52,7 +52,7 @@ exit;
 <td width="104" align="center" background="images/<?php echo $mbkind; ?>/2.gif" style="padding-top:5px;"><a href="<?php echo $Global['www_2domain'];?>" class="title">交友首页</a></td>
 <td width="104" align="center" background="images/<?php echo $mbkind; ?>/2.gif" style="padding-top:5px;"><a href="<?php echo $mainid; ?>" class=title>圈子首页</a></td>
 <td width="104" align="center" background="images/<?php echo $mbkind; ?>/2.gif" style="padding-top:5px;"><a href="article<?php echo $mainid; ?>.html" class="title">圈内话题</a></td>
-<td width="104" align="center" background="images/<?php echo $mbkind; ?>/3.gif" style="padding-top:5px;"><a href="party<?php echo $mainid; ?>.html" class="titleselected">活动聚会</a></td>
+<td width="104" align="center" background="images/<?php echo $mbkind; ?>/3.gif" style="padding-top:5px;"><a href="party<?php echo $mainid; ?>.html" class="titleselected">旅游线路</a></td>
 <td width="104" align="center" background="images/<?php echo $mbkind; ?>/2.gif" style="padding-top:5px;"><a href="photo<?php echo $mainid; ?>.html" class="title">圈子相册</a></td>
 <td width="104" align="center" background="images/<?php echo $mbkind; ?>/2.gif" style="padding-top:5px;"><a href="user<?php echo $mainid; ?>.html" class="title">圈子成员</a></td>
 <td width="104" align="center" background="images/<?php echo $mbkind; ?>/2.gif" style="padding-top:5px;"><a href="<?php echo $Global['my_2domain']."/?i_group_invite.php?mainid=".$mainid;?>" class="title">邀请他人</a></td>
@@ -68,9 +68,11 @@ exit;
 <tr>
 <td height="23" background="images/<?php echo $mbkind; ?>/5.gif" style="border-left:#ffffff 2px solid;border-right:#ffffff 2px solid;"><table width="100%" height="23" border="0" cellpadding="0" cellspacing="0">
 <tr>
-<td width="93%" style="padding-top:3px;"><img src="images/<?php echo $mbkind; ?>/li.gif" width="5" height="15" hspace="5" align="absmiddle"> <font color="#FFFFFF"><b><?php echo "<a href=".$Global['group_2domain']."/".$mainid." class=title>".$maintitle."</a>"; ?>
+<td width="93%" style="padding-top:3px;">
+	<img src="images/<?php echo $mbkind; ?>/li.gif" width="5" height="15" hspace="5" align="absmiddle">
+		<font color="#FFFFFF"><b><?php echo "<a href=".$Global['group_2domain']."/".$mainid." class=title>旅游线路列表</a>"; ?>
 <?php
-echo " >> "."<a href=party".$mainid.".html class=title>圈子活动聚会</a>";
+echo " >> "."<a href=party".$mainid.".html class=title>旅游线路</a>";
 ?></b></font></td>
 <td width="7%" align="right" valign="bottom"><a href="article<?php echo $mainid; ?>.html"></a></td>
 </tr>
@@ -109,14 +111,14 @@ mysql_data_seek($rt,($p-1)*$pagesize);
   <tr>
     <td valign="top" style="padding-top:2px;padding-bottom:2px;"><table width="950" height="26" border="0" align="center" cellpadding="0" cellspacing="0" class=tdbg3 style="font-weight:bold">
           <tr>
-            <td width="353" align="center" valign="bottom" class=tiaose>活 动 名 称</td>
-            <td width="68" align="center" valign="bottom" class=tiaose>活动类型</td>
-            <td width="94" align="center" valign="bottom" class=tiaose>活动时间</td>
+            <td width="353" align="center" valign="bottom" class=tiaose>线 路 名 称</td>
+            <td width="68" align="center" valign="bottom" class=tiaose>线路类型</td>
+            <td width="260" align="center" valign="bottom" class=tiaose>线路时间</td>
             <td width="93" align="center" valign="bottom" class=tiaose>发起人</td>
-            <td width="61" align="center" valign="bottom" class=tiaose>活动状态</td>
+            <td width="61" align="center" valign="bottom" class=tiaose>线路状态</td>
             <td width="45" align="center" valign="bottom" class=tiaose>已报名</td>
             <td width="55" align="center" valign="bottom" class=tiaose>邀请人数</td>
-            <td width="181" align="center" valign="bottom" class=tiaose>开始报名</td>
+            <td width="181" align="center" valign="bottom" class=tiaose>报名状态</td>
           </tr>
       </table></td>
   </tr>
@@ -136,7 +138,8 @@ $outbg="#ffffff";
 }
 ?>
 <table width="980" border="0" align="center" cellpadding="0" cellspacing="0" background="images/bkbg.gif">
-<tr><td><table width="950" height="40" border="0" align="center" cellpadding="0" cellspacing="0" style="border-bottom:#dddddd 1px solid">
+<tr><td>
+<table width="950" height="40" border="0" align="center" cellpadding="0" cellspacing="0" style="border-bottom:#dddddd 1px solid">
 <tr <?php echo $bg;?> onMouseOver="this.style.background='<?php echo $overbg; ?>'" onMouseOut="this.style.background='<?php echo $outbg; ?>'"><td width="354" style="font-size:10.3pt;padding-left:5px;font-weight:bold;">
 <?php
 	echo "<a href=partyshow".$rows['id'].".html class=333333>";
@@ -145,7 +148,7 @@ $outbg="#ffffff";
 if ($rows['flag'] == 1)echo "<img src=images/new2.gif hspace=6 border=0>";
 ?></td>
   <td width="67" align="center" style="color:#666666"><?php echo $rows['kind'];?></td>
-  <td width="94" align="center" style="padding-top:5px;padding-bottom:5px;color:#666666"><?php echo $rows['hdtime'];?></td>
+  <td width="260" align="center" style="padding-top:5px;padding-bottom:5px;color:#666666"><?php echo $rows['hdtime'];?></td>
   <td width="94" align="center"><?php
 geticon($sex.$grade);
 echo "<a href=".$Global['home_2domain']."/".$userid." target=_blank>".$nickname."</a>";
@@ -214,8 +217,6 @@ echo '<span class=timestyletext>'.$outtime.'</span>';
   <tr>
     <td align="center" bgcolor="efefef"><font color="#999999">..本圈子暂无活动..<br>
         <br>
-
-
 <?php 
 if ($authority_main == 'OK'){
 ?>
@@ -223,9 +224,6 @@ if ($authority_main == 'OK'){
 <br>
     </font><img src="images/party.gif" width="17" height="12" hspace="3" align="absmiddle"><a href="<?php echo $Global['my_2domain']; ?>/?i_group_club.php?mainid=<?php echo $mainid; ?>&submitok=add" style="font-size:10.3pt;font-weight:bold;"><u>发布活动</u></a>
 <?php }?>
-
-
-
 	</td>
   </tr>
 </table>  
@@ -252,6 +250,13 @@ if ($authority_main == 'OK'){
 </tr>
 </table>
 <table width="980" border="0" align="center" cellpadding="0" cellspacing="0">
-<tr><td><img src="images/<?php echo $mbkind; ?>/4.gif" width="980" height="4"></td></tr></table><table width="980" height="34" border="0" align="center" cellpadding="0" cellspacing="0"><tr><td width="21">&nbsp;</td>
-<td align="center"><font color="#999999">&copy;版权所有<?php echo date("Y"); ?>　<?php echo $Global['m_sitename']; ?> (<a href="<?php echo $Global['www_2domain']; ?>" target="_blank"><?php echo $Global['m_siteurl']; ?></a>) </font></td>
-<td width="22"><a href="#top"><img src="images/bl_top.gif" alt="返回页顶" width="22" height="15" border="0"></a></td></tr></table><br><br></body></html><?php ob_end_flush();?>
+<tr><td><img src="images/<?php echo $mbkind; ?>/4.gif" width="980" height="4"></td>
+</tr></table>
+<table width="980" height="34" border="0" align="center" cellpadding="0" cellspacing="0">
+<tr><td width="21">&nbsp;</td>
+<td align="center"><font color="#999999">版权所有<?php echo date("Y"); ?>　<?php echo $Global['m_sitename']; ?> (<a href="<?php echo $Global['www_2domain']; ?>" target="_blank"><?php echo $Global['m_siteurl']; ?></a>) </font></td>
+<td width="22"><a href="#top"><img src="images/bl_top.gif" alt="返回页顶" width="22" height="15" border="0"></a></td>
+</tr></table><br><br>
+</body>
+</html>
+<?php ob_end_flush();?>

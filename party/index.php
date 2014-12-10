@@ -16,7 +16,7 @@ $t=!ereg("^[1-5]{1}$",$t)?1:$t;
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <title><?php echo $Global['m_area2']; ?>网友活动聚会 万人相亲大会 交友活动俱乐部</title>
-<link href="../css/main.css" rel="stylesheet" type="text/css">
+<link href="../css/main.css" rel="stylesheet" type="text/css" />
 <style type="text/css"> 
 .title{width:980px;height:26px;margin:0px auto;margin-top:10px;background-image:url(../images/uTlibg.gif)}
 .uTli,.uTliSelect,.uTliK{float:left;width:80px;height:18px;padding:8px 0 0 0;margin:0 5px 0 0}
@@ -57,10 +57,12 @@ $t=!ereg("^[1-5]{1}$",$t)?1:$t;
 <body>
 <?php require_once wrzc_net.'top.php';?>
 <div class="title">
-	<div class="<?php echo ($t==1)?'uTliSelect':'uTli'; ?>"><a href="./?t=1">最新活动</a></div>
-	<div class="<?php echo ($t==2)?'uTliSelect':'uTli'; ?>"><a href="./?t=2">推荐活动</a></div>
-	<div class="<?php echo ($t==3)?'uTliSelect':'uTli'; ?>"><a href="./?t=3">活动进行</a></div>
-	<div class="<?php echo ($t==4)?'uTliSelect':'uTli'; ?>"><a href="./?t=4">活动回顾</a></div>
+	<div class="<?php echo ($t==1)?'uTliSelect':'uTli'; ?>"><a href="./?t=1">最新旅游线路</a></div>
+	<div class="<?php echo ($t==2)?'uTliSelect':'uTli'; ?>"><a href="./?t=2">推荐旅游线路</a></div>
+	<!-- 
+	<div class="<?php //echo ($t==3)?'uTliSelect':'uTli'; ?>"><a href="./?t=3">旅游进行</a></div>
+	 -->
+	<div class="<?php echo ($t==4)?'uTliSelect':'uTli'; ?>"><a href="./?t=4">旅游线路回顾</a></div>
 	<div class="<?php echo ($t==5)?'uTliSelect':'uTliK'; ?>"><?php echo ($t==5)?'搜索结果':''; ?></div>
 	<div class="uTliBlank">输入活动名称(支持模糊查询)：</div>
 	<div class="uTliPage">
@@ -73,7 +75,10 @@ $t=!ereg("^[1-5]{1}$",$t)?1:$t;
 			}
 		}
 	</script>
-	<form action="./" method="get" name=wrzc_netform onsubmit="return chk()"><input name="k" type="text" class="Sinput" maxlength="50"><input type="image" src="../images/sox.gif" align=absmiddle /><input type="hidden" name="t" value="5" /></form>
+	<form action="./" method="get" name="wrzc_netform" onsubmit="return chk();">
+		<input name="k" type="text" class="Sinput" maxlength="50" /><input type="image" src="../images/sox.gif" align=absmiddle />
+		<input type="hidden" name="t" value="5" />
+	</form>
 	</div>
 </div>
 <div class="titleline"></div>
@@ -87,7 +92,8 @@ $t=!ereg("^[1-5]{1}$",$t)?1:$t;
 		case 5:$k  = trimm($k);$tmpsubsql = " title LIKE '%".$k."%' AND ";$tmpsort   = " ORDER BY id DESC";break;
 		default:$tmpsubsql = "";$tmpsort   = " ORDER BY id DESC";break;
 	}
-	$rt=$db->query("SELECT id,title,hdtime,address,num_n,num_r,flag,jzbmtime,bmnum,ifjh,picurl_s FROM ".__TBL_GROUP_CLUB__." WHERE $tmpsubsql flag>0 $tmpsort");
+	$sql = "SELECT id,title,hdtime,address,num_n,num_r,flag,jzbmtime,bmnum,ifjh,picurl_s FROM ".__TBL_GROUP_CLUB__." WHERE $tmpsubsql flag>0 $tmpsort";
+	$rt=$db->query($sql);
 	if (!$db->num_rows($rt)){
 		echo '<h6>暂无信息</h6>';
 	} else {
@@ -142,7 +148,7 @@ $t=!ereg("^[1-5]{1}$",$t)?1:$t;
 				$outtime .= "</div><div class=pr4r><a href=".$Global['group_2domain']."/partyshow".$id.".html target=_blank><img src='images/detail.gif'></a></div>";
 			}
 	?>
-	<div class="Pbox<?php echo $tmpmargin ?>">
+	<div class="Pbox<?php echo $tmpmargin; ?>">
 		<div class="Pt">〖<a href="<?php echo $href; ?>" target="_blank"><?php echo $title; ?></a>〗 <?php echo $flagout; ?> <?php echo $ifjh; ?></div>
 		<div class="Pc">
 			<div class="PL"><?php echo $picurl_s; ?></div>
