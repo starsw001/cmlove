@@ -48,7 +48,7 @@ span{font-family:Verdana}
 <tr>
 <td style="padding:5px;"><table width="100%" height="71" border="0" cellpadding="0" cellspacing="0">
 <tr>
-<td width="200" align="center" background="images/logobg.gif"><a href="<?php echo $Global['www_2domain']; ?>" target="_parent"><img src="images/logo.gif" alt="返回交友网首页" width="190" height="50" border="0" /></a></td>
+<td width="200" align="center" background="images/logobg.gif"><a href="<?php echo $Global['www_2domain']; ?>" target="_parent"><img src="../images/logo.gif" alt="返回交友网首页" width="190" height="50" border="0" /></a></td>
 <td align="left" valign="top" bgcolor="#F7F7F7" style="border-top:#cdcdcd 1px solid;"><table width="97%" height="38" border="0" align="center" cellpadding="0" cellspacing="0">
 <tr>
 <td width="255" align="center">欢迎您：“<span><?php echo $cook_nickname;?> (<?php echo $cook_username;?>)</span>”</td>

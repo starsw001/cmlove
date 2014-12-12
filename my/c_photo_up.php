@@ -51,7 +51,6 @@ if ($submitok == "upload"){
 		$filepath = wrzc_net."up/photo/".date("y")."/".date("md")."/";
 		$dbpath = date("y")."/".date("md")."/";
 		$dymd = date("md");
-		$d = !is_dir($dymd);
 		if ( !is_dir($dymd) ) {
 			mkdir($dymd, 0777);
 		}
