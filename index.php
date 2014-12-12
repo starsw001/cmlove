@@ -179,7 +179,7 @@ if (! $db->num_rows ( $rt )) {
 		<div class="right">
 			<div class="partyT">
 				<div class="partyT0 partyTWH" id="p1" onmouseover="doparty(this)">
-					<a href="party">交友活动</a>
+					<a href="party">交友旅游</a>
 				</div>
 				<div class="partyT0 partyTWH" id="p2" onmouseover="doparty(this)">
 					<a href="dating">约会1+1</a>
@@ -412,10 +412,12 @@ echo "</script>";
 			</div>
 		</div>
 		<div class="right">
+		<!-- 
 			<div class="adv">
 				<span id="AD1"></span>
 				<script language="JavaScript">wrzc_net_getbyid('AD1').innerHTML = AD1;</script>
 			</div>
+		 -->	
 			<div class="diaryT">
 				<div class="diaryT1 diaryTWH" id="d1" onmouseover="dodiary(this)">
 					<a href="diary">最新日记</a>
