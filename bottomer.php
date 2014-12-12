@@ -15,7 +15,7 @@
     <br/>
     版权所有<span>&copy;2010~2014</span> 　相约同行网 ( <span class=url>www.aileyou520.com</span> )
     <br/>
-    客服<span>QQ1：807562053 &nbsp;&nbsp;QQ2：2242397673 &nbsp;&nbsp;QQ3：2530543871</span> 　电话：<span>021-55968315</span>(正常上班时间) 传真：021-55968352　手机：<span>13916671001</span>
+    客服<span>QQ1：807562053 &nbsp;&nbsp;QQ2：2242397673 &nbsp;&nbsp;QQ3：2530543871</span> 　电话：<span>021-55968315</span>(正常上班时间) 传真：<span>021-55968352</span>　手机：<span>13916671001</span>
     <br/>
     声明：本站属免费交友网站，我们会对信息进行核实，但不承担因此带来的任何责任。查看全文<a href="/wrzcnet-terms.php">免责声明</a>
     <br/>
@@ -57,7 +57,7 @@
                         <tr>
                             <td align="middle" height="22">
                                 <font color="#7f5246">
-                                    2000-2014 www.aileyou520.com <span class="css2">相约同行网</span>版权所有
+                                    2000-<?php echo date("Y");?> www.aileyou520.com <span class="css2">相约同行网</span>版权所有
                                 </font>
                             </td>
                         </tr>

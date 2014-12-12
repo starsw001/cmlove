@@ -33,8 +33,8 @@ require_once wrzc_net . 'sub/conn.php';
 				<div class="adv">
 					<span id="wrzc_net_wrzc_net_FAD"></span>
 					<script type="text/javascript">
-wrzc_netAd('wrzc_net_wrzc_net_FAD',focus_ly,focus_width,swf_height,pics,links,texts);
-</script>
+					wrzc_netAd('wrzc_net_wrzc_net_FAD',focus_ly,focus_width,swf_height,pics,links,texts);
+					</script>
 				</div>
 				<div class="search">
 					<form method=get action="user/searchlist.php" name=wrzc_net>
@@ -60,7 +60,7 @@ wrzc_netAd('wrzc_net_wrzc_net_FAD',focus_ly,focus_width,swf_height,pics,links,te
 							<select name="birthday2" class=selwx>
 								<option value="">²»ÏÞ</option><?php for($i=18;$i<=70;$i++) {?><option
 									value="<?php echo $i;?>" <?php if ($i == 40)echo 'selected'; ?>><?php echo $i; ?> Ëê</option><?php }?>
-</select>
+							</select>
 						</div>
 						<div class="sli2">
 							<img src="images/zoomx.gif" hspace="4" align="absmiddle" />
