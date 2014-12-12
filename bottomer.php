@@ -15,7 +15,7 @@
     <br/>
     版权所有<span>&copy;2010~2014</span> 　相约同行网 ( <span class=url>www.aileyou520.com</span> )
     <br/>
-    客服<span>QQ1：807562053</span> 　电话：<span>021-55968315</span>(正常上班时间)　手机：<span>13916671001</span>
+    客服<span>QQ1：807562053 &nbsp;&nbsp;QQ2：2242397673 &nbsp;&nbsp;QQ3：2530543871</span> 　电话：<span>021-55968315</span>(正常上班时间) 传真：021-55968352　手机：<span>13916671001</span>
     <br/>
     声明：本站属免费交友网站，我们会对信息进行核实，但不承担因此带来的任何责任。查看全文<a href="/wrzcnet-terms.php">免责声明</a>
     <br/>
@@ -41,13 +41,13 @@
                                 <font color="#a5846c">
                                     <span class="css2">客服QQ:807562053</span>
                                     <a target="blank" href="tencent://message/?uin=807562053&amp;Site=相约同行网客服为你服务&amp;Menu=yes"><img border="0" src="/qqonline.gif" alt="相约同行网客服为你服务" /></a>
-									<span class="css2">807562053</span>
+									<span class="css2">2242397673</span>
                                     <font face=Verdana>
-                                        <a target=blank href=tencent://message/?uin=807562053&Site=相约同行网客服为你服务&Menu=yes><img border="0" src=/qqonline.gif alt="相约同行网客服为你服务"></a>
+                                        <a target=blank href=tencent://message/?uin=2242397673&Site=相约同行网客服为你服务&Menu=yes><img border="0" src=/qqonline.gif alt="相约同行网客服为你服务"></a>
                                     </font>
-									<span class="css2">807562053</span>
+									<span class="css2">2530543871</span>
                                     <font face="Verdana">
-                                        <a target="blank" href="tencent://message/?uin=807562053&amp;Site=相约同行网客服为你服务&amp;Menu=yes"><img border="0" src="/qqonline.gif" alt="相约同行网客服为你服务" /></a>
+                                        <a target="blank" href="tencent://message/?uin=2530543871&amp;Site=相约同行网客服为你服务&amp;Menu=yes"><img border="0" src="/qqonline.gif" alt="相约同行网客服为你服务" /></a>
                                     </font>
                                     <br>
                                         联系我们  E-mail:<a href="mailto:jinlv@shkinglv.com">jinlv@shkinglv.com</a>
@@ -68,25 +68,20 @@
     </tbody>
 </table>
 <style type="text/css">
-
 <!-- .STYLE3 {
     font-size: 12px;
     font-family: "宋体";
 }
-
 body {
     margin-top: 0px;
 }
-
 .STYLE4 {
     font-size: 12px
 }
-
 .STYLE5 {
     font-size: 13px
 }
 -->
-
 </style>
 <TABLE height="30" cellSpacing="0" cellPadding="0" width="980" align="center" bgColor="#ff6600" border="0">
     <TBODY>

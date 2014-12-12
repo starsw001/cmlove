@@ -412,10 +412,12 @@ echo "</script>";
 			</div>
 		</div>
 		<div class="right">
+		<!-- 广告
 			<div class="adv">
 				<span id="AD1"></span>
 				<script language="JavaScript">wrzc_net_getbyid('AD1').innerHTML = AD1;</script>
 			</div>
+			 -->
 			<div class="diaryT">
 				<div class="diaryT1 diaryTWH" id="d1" onmouseover="dodiary(this)">
 					<a href="diary">最新日记</a>
