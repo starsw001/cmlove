@@ -15,7 +15,7 @@ $t=!ereg("^[1-5]{1}$",$t)?1:$t;
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-<title><?php echo $Global['m_area2']; ?>网友活动聚会 万人相亲大会 交友活动俱乐部</title>
+<title><?php echo $Global['m_area2']; ?>交友旅游 网友聚会</title>
 <link href="../css/main.css" rel="stylesheet" type="text/css" />
 <style type="text/css"> 
 .title{width:980px;height:26px;margin:0px auto;margin-top:10px;background-image:url(../images/uTlibg.gif)}
@@ -92,7 +92,7 @@ $t=!ereg("^[1-5]{1}$",$t)?1:$t;
 		case 5:$k  = trimm($k);$tmpsubsql = " title LIKE '%".$k."%' AND ";$tmpsort   = " ORDER BY id DESC";break;
 		default:$tmpsubsql = "";$tmpsort   = " ORDER BY id DESC";break;
 	}
-	$sql = "SELECT id,title,hdtime,address,num_n,num_r,flag,jzbmtime,bmnum,ifjh,picurl_s FROM ".__TBL_GROUP_CLUB__." WHERE $tmpsubsql flag>0 $tmpsort";
+	$sql = "SELECT id,title,hdtime,address,num_n,num_r,flag,jzbmtime,bmnum,ifjh,picurl_s,kind FROM ".__TBL_GROUP_CLUB__." WHERE $tmpsubsql flag>0 $tmpsort";
 	$rt=$db->query($sql);
 	if (!$db->num_rows($rt)){
 		echo '<h6>暂无信息</h6>';
@@ -127,6 +127,7 @@ $t=!ereg("^[1-5]{1}$",$t)?1:$t;
 			$ifjh = !empty($ifjh)?' <span class=red2>推荐</span>':'';
 			$picurl_s = $rows[10];
 			$picurl_s = empty($picurl_s)?'·暂无主照片·':'<img src='.$Global['up_2domain'].'/photo/'.$picurl_s.'>';
+			$kind = $rows[11];
 			$d1  = strtotime("now");
 			$d2  = strtotime($jzbmtime);
 			$totals  = ($d2-$d1);
@@ -136,27 +137,32 @@ $t=!ereg("^[1-5]{1}$",$t)?1:$t;
 			$minute  = intval($hourmod*60);
 			if ($flag >2)$totals = -1;
 			if (($totals) > 0) {
-				if ($day > 0){
-					$outtime = "<div class=pr4l>离报名结束还有 <span class=timestyle>$day</span> 天 ";
-				} else {
-					$outtime = "<div class=pr4l>离报名结束还有 ";
-				}
-				$outtime .= "<span>$hour</span> 小时 <span>$minute</span> 分</div>";
-				$outtime .= "<div class=pr4r><a href=".$Global['group_2domain']."/partyshow".$rows['id'].".html target=_blank><img src='images/bm.gif'></a></div>";
+// 				if ($day > 0){
+// 					$outtime = "<div class=pr4l>离报名结束还有 <span class=timestyle>$day</span> 天 ";
+// 				} else {
+// 					$outtime = "<div class=pr4l>离报名结束还有 ";
+// 				}
+// 				$outtime .= "<span>$hour</span> 小时 <span>$minute</span> 分</div>";
+				$outtime .= "<div class=pr4r style=\"float:right;\"><a href=".$Global['group_2domain']."/partyshow".$rows['id'].".html target=_blank><img src='images/bm.gif'></a></div>";
 			} else {
 				$outtime = "<div class=pr4l>";
 				$outtime .= "</div><div class=pr4r><a href=".$Global['group_2domain']."/partyshow".$id.".html target=_blank><img src='images/detail.gif'></a></div>";
 			}
 	?>
 	<div class="Pbox<?php echo $tmpmargin; ?>">
-		<div class="Pt">〖<a href="<?php echo $href; ?>" target="_blank"><?php echo $title; ?></a>〗 <?php echo $flagout; ?> <?php echo $ifjh; ?></div>
+		<div class="Pt" style="height:70px;"><a href="<?php echo $href; ?>" target="_blank">【<?php echo $kind;?>】<br/><?php echo $title; ?></a><?php //echo $flagout; ?> <?php //echo $ifjh; ?></div>
 		<div class="Pc">
 			<div class="PL"><?php echo $picurl_s; ?></div>
 			<div class="PR">
-				<div class="pr1" title="<?php echo $hdtime; ?>">时间：<?php echo $hdtime; ?></div>
-				<div class="pr2">地点：<?php echo $address; ?></div>
-				<div class="pr3">邀请 <?php echo $yqnum; ?>　已报名 <?php echo $bmnum; ?> 人</div>
-				<div class="pr4"><?php echo $outtime; ?></div>
+				<div class="pr1" title="<?php echo $hdtime; ?>">时间：周末<?php //echo $hdtime; ?></div>
+				<div class="pr2">成团：50 人<?php //echo $address; ?></div>
+				<!-- 
+				<div class="pr3">邀请 <?php //echo $yqnum; ?>　已报名 <?php //echo $bmnum; ?> 人</div>
+				 -->
+				<div class=pr4r style="float:right;"><a href="<?php echo $Global['group_2domain'];?>/partyshow<?php echo $rows['id'];?>.html" target="_blank"><img src='images/bm.gif' /></a></div>
+				<!-- 
+				<div class="pr4"><?php //echo $outtime; ?></div>
+				 -->
 			</div>
 		</div>
 	</div>

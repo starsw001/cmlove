@@ -15,7 +15,9 @@
     <br/>
     版权所有<span>&copy;2010~2014</span> 　相约同行网 ( <span class=url>www.aileyou520.com</span> )
     <br/>
-    客服<span>QQ1：807562053 &nbsp;&nbsp;QQ2：2242397673 &nbsp;&nbsp;QQ3：2530543871</span> 　电话：<span>021-55968315</span>(正常上班时间) 传真：<span>021-55968352</span>　手机：<span>13916671001</span>
+    客服<span>QQ1：807562053 &nbsp;&nbsp;QQ2：2242397673 &nbsp;&nbsp;QQ3：2530543871</span> 　
+  	<br/>  
+    电话：<span>021-55968315 4000801003</span>(正常上班时间) 传真：<span>021-55968352</span>　手机：<span>13916671001</span>
     <br/>
     声明：本站属免费交友网站，我们会对信息进行核实，但不承担因此带来的任何责任。查看全文<a href="/wrzcnet-terms.php">免责声明</a>
     <br/>
@@ -23,7 +25,7 @@
 </div>
 <br/>
 <br/>
-<table cellspacing="0" cellpadding="0" width="980" align="center" border="0">
+<table cellspacing="0" cellpadding="0" width="980" align="center" border="0" style="margin-top:25px;">
     <tbody>
         <tr>
             <td bgColor="#ffffff">
@@ -31,9 +33,7 @@
                     <tbody>
                         <tr>
                             <td align="middle" height="22">
-                                <font color="#a5846c">
-                                    地址:<span class="css2">上海市控江路2063号五环大厦西座1011室</span>&nbsp;&nbsp;&nbsp;联系电话：021-55968315&nbsp;&nbsp;<span class="css2">13916671001</span>
-                                </font>
+                                <font color="#a5846c">地址:<span class="css2">上海市控江路2063号五环大厦西座1011室</span>&nbsp;联系电话：021-55968315 4000801003&nbsp;&nbsp;<span class="css2">13916671001</span>                                </font>
                             </td>
                         </tr>
                         <tr>

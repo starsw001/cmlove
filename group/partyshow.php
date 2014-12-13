@@ -62,14 +62,15 @@ if($db->num_rows($rt)){
 		$num_n = $row['num_n'];
 		$num_r = $row['num_r'];
 		$rmb_n = $row['rmb_n'];
-		$rmb_r = $row['rmb_r'];
+		$rmb_r = htmlout(stripslashes($row['rmb_r']));
 		$tbsm = htmlout(stripslashes($row['tbsm']));
-		$content = stripslashes($row['content']);
+		$content = htmlout(stripslashes($row['content']));
 		$flag = $row['flag'];
 		$click = $row['click'];
 		$jzbmtime = $row['jzbmtime'];
 		$addtime = $row['addtime'];
 		$bmnum = $row['bmnum'];
+		$jdgk = htmlout(stripslashes($row['jdgk']));//景点概况
 	}
 	$gbooknum = $row['gbooknum'];
 } else {
@@ -171,7 +172,7 @@ alert("复制成功！你可以使用粘贴或(Ctrl+V)功能与其他好友一同分享！");
     	<img src="images/<?php echo $mbkind; ?>/li.gif" width="5" height="15" hspace="5" align="absmiddle" />
     		<font color="#FFFFFF"><b><?php echo "<a href=".$Global['group_2domain']."/".$mainid." class=title>".$maintitle."</a>"; ?>
 			<?php
-			echo " >> "."<a href=party".$mainid.".html class=title>俱乐部旅游线路</a> >> </b>"."<a href=partyshow".$fid.".html class=title>".$title."</a>";
+			echo " >> "."<a href=party".$mainid.".html class=title>旅游线路</a> >> </b>"."<a href=partyshow".$fid.".html class=title>".$title."</a>";
 			?></font>
 	</td>
     <td width="29%" align="right" valign="bottom" style="padding-bottom:2px;padding-right:8px;"><font class="tiaobgse"><b>>></b><a onclick=recommend() href="####"><font class="yq">复制本帖地址，让好友陪我一起参加聚会！</font></a><b><<</b></font></td>
@@ -202,35 +203,53 @@ if ($flag >2)$totals = -1;
   <td width="713" height="30" background="images/<?php echo $mbkind; ?>/tdbg.gif" style="font-size:10.3pt;font-weight:bold;padding-left:5px;border-left:#ffffff 1px solid;border-top:#ffffff 1px solid;">
     <table width="99%" border="0" cellspacing="0" cellpadding="0">
       <tr>
-        <td width="438" style="font-size:10.3pt;font-weight:bold;">
+        <td width="588" style="font-size:10.3pt;font-weight:bold;">
 <font class=tiaose >旅游线路名称：<img src="images/party.gif" hspace="5"><?php echo $title; ?></font></td>
 <td width="262" align="right">人气<font color="#FF0000"><b><?php echo $click; ?></b></font> 次　(留言<font color="#FF0000"><b><?php echo $gbooknum; ?></b></font> 条，<a href="#party_href" onClick="javascript:oEditor.focus();"><img src="images/fb.gif" width="13" height="13" hspace="3" border="0" align="absmiddle"><u><font color="#333333"><b>我要留言</b></font></u></a>)</td>
       </tr>
     </table></td>
+    
+    <!--  -->
   <td width="224" align="center" background="images/<?php echo $mbkind; ?>/tdbg.gif"  style="border-top:#ffffff 1px solid;border-right:#ffffff 1px solid;">
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
-    <td width="46%" style="font-weight:bold;padding-left:5px;">已报名：<font color="#FF0000" face="Verdana, Arial" style="font-size:9pt;"><b><?php echo $bmnum; ?></b></font> 人<input name="mainid" type="hidden" value="<?php echo $mainid;?>">
-<input name="fid" type="hidden" value="<?php echo $fid;?>"><input name="mbkind" type="hidden" value="<?php echo $mbkind;?>">
+  <!--  
+    <td width="46%" style="font-weight:bold;padding-left:5px;">已报名：<font color="#FF0000" face="Verdana, Arial" style="font-size:9pt;"><b><?php //echo $bmnum; ?></b></font> 人<input name="mainid" type="hidden" value="<?php //echo $mainid;?>">
+<input name="fid" type="hidden" value="<?php //echo $fid;?>"><input name="mbkind" type="hidden" value="<?php //echo $mbkind;?>">
 <input name="submitok" type="hidden" value="bmupdate">
 </td>
-    <td width="54%" align="right" valign="bottom" style="padding-right:5px;padding-top:4px"><?php if ($totals > 0) {?>
+-->
+<!-- 
+    <td width="54%" align="right" valign="bottom" style="padding-right:5px;padding-top:4px"><?php //if ($totals > 0) {?>
 <input type="image" src="images/bm2.gif">
-<?php }else{  ?>
+<?php //}else{  ?>
 <img src="images/jzbm.gif" border=0 align=absmiddle><font color="#999999" style="font-size:9pt;">已截止报名</font>
-<?php }?></td>
+<?php //}?></td>
+ -->
   </tr>
 </table></td>
 </tr>
+
 <tr>
   <td align="center" valign="top" bgcolor="#FFFFFF"><br>    <table width="680" border="0" cellpadding="5" cellspacing="1">
+  <!-- 
     <tr class=tdbg>
       <td width="64" height="30" align="right"><font class=tiaose>发 起 人:</font></td>
       <td width="593"><?php
-geticon($sex.$grade);
-echo "<a href=".$Global['home_2domain']."/".$userid." target=_blank><u>".$nickname."</u></a>";
+//geticon($sex.$grade);
+//echo "<a href=".$Global['home_2domain']."/".$userid." target=_blank><u>".$nickname."</u></a>";
 ?></td>
     </tr>
+     -->
+    <tr class=tdbg>
+      <td width="64" height="30" align="right"><font class=tiaose>景点概况:</font></td>
+      <td width="593"><?php
+//geticon($sex.$grade);
+//echo "<a href=".$Global['home_2domain']."/".$userid." target=_blank><u>".$nickname."</u></a>";
+echo $jdgk;
+?></td>
+    </tr>
+    
     <tr>
       <td height="30" align="right"><font class=tiaose>状　　态:</font></td>
       <td><?php 
@@ -242,7 +261,7 @@ switch ($flag){
 		echo "<img src=images/bm.gif> <font color=0066CC>正在报名...</font>";
 	break;
 	case 2:
-		echo '<font color=ff6600>旅游线路进行中</font>';
+		echo '<font color=ff6600>旅游报名进行中</font>';
 	break;
 	case 3:
 		echo "<font color=349933>圆满成功</font>";
@@ -250,6 +269,8 @@ switch ($flag){
 }
 ?></td>
     </tr>
+
+    <!-- 
     <tr class=tdbg>
       <td height="30" align="right" valign="top">&nbsp;</td>
       <td style="color:#666666">
@@ -257,7 +278,8 @@ switch ($flag){
 .timestyle {color:#f00;font-size:22px;font-weight:bold}
 .timestyletext {color:#666;font-size:14px}
 </style>
-<?php 
+<?php
+/* 
 if ($totals > 0) {
 	$outtime = "<img src=images/date.gif align=absmiddle vspace=10>&nbsp;";
 	if ($day > 0){
@@ -275,48 +297,66 @@ if ($totals > 0) {
 }
 echo '<span class=timestyletext> '.$outtime.'</span>';
 echo '<br>截止报名日期到：'.date_format2($jzbmtime,'%Y-%m-%d %H:%M').'　'.getweek(date_format2($jzbmtime,'%Y-%m-%d'));
+*/
 ?></td>
     </tr>
+     -->
+     <!--  
     <tr>
-      <td height="30" align="right"><font class=tiaose>类　　型:</font></td>
-      <td><?php echo $kind; ?></td>
+      <td height="30" align="right"><font class=tiaose>板　　块:</font></td>
+      <td><?php //echo $kind; ?></td>
     </tr>
+    -->
+    
     <tr class=tdbg>
       <td height="30" align="right"><font class=tiaose>时　　间:</font></td>
-      <td><?php echo $hdtime; ?></td>
+      <td>周 末<?php //echo $hdtime; ?></td>
     </tr>
+    <!-- 
     <tr>
       <td height="30" align="right"><font class=tiaose>地　　点:</font></td>
-      <td><?php echo $address; ?></td>
+      <td><?php //echo $address; ?></td>
     </tr>
+     -->
     <tr class=tdbg>
-      <td height="30" align="right"><font class=tiaose>交通路线:</font></td>
+      <td height="30" style="padding-top:1px;text-align:right;"><font class=tiaose>行　　程:</font></td>
       <td><?php echo $jtlx; ?></td>
     </tr>
+    
+    <!-- 
     <tr>
       <td height="30" align="right"><font class=tiaose>邀请人数:</font></td>
-      <td><img src="images/nan.gif" alt="男" width="11" height="14"> <?php if ($num_n == 0){echo '不限';}else{echo '<b><font color=#FF0000>'.$num_n.'</font></b> 人';}?> ， <img src="images/nv.gif" alt="女" width="11" height="14">
-<?php if ($num_r == 0){echo '不限';}else{echo '<b><font color=#FF0000>'.$num_r.'</font></b> 人';}?></td>
+      <td><img src="images/nan.gif" alt="男" width="11" height="14"> <?php //if ($num_n == 0){echo '不限';}else{echo '<b><font color=#FF0000>'.$num_n.'</font></b> 人';}?> ， <img src="images/nv.gif" alt="女" width="11" height="14">
+<?php //if ($num_r == 0){echo '不限';}else{echo '<b><font color=#FF0000>'.$num_r.'</font></b> 人';}?></td>
     </tr>
+     -->
+    
     <tr class=tdbg>
       <td height="30" align="right"><font class=tiaose>费　　用:</font></td>
-      <td><img src="images/nan.gif" alt="男" width="11" height="14"> 
-         <?php if ($rmb_n == 0){echo '免费或AA制';}else{echo '<b><font color=#FF0000>'.$rmb_n.'</font></b> 元';}?>
+      <td>
+      <!-- 
+      <img src="images/nan.gif" alt="男" width="11" height="14"> 
+         <?php //if ($rmb_n == 0){echo '免费或AA制';}else{echo '<b><font color=#FF0000>'.$rmb_n.'</font></b> 元';}?>
  ， <img src="images/nv.gif" alt="女" width="11" height="14">
-<?php if ($rmb_r == 0){echo '免费或AA制';}else{echo '<b><font color=#FF0000>'.$rmb_r.'</font></b> 元';}?>
+<?php //if ($rmb_r == 0){echo '免费或AA制';}else{echo '<b><font color=#FF0000>'.$rmb_r.'</font></b> 元';}?>
+ --><?php echo $rmb_n;?><br>
+ <?php echo $rmb_r;?>
 </td>
     </tr>
-    <tr>
-      <td height="30" align="right"><font class=tiaose>特别说明:</font></td>
-      <td><?php echo $tbsm; ?></td>
-</tr>
+    
+    <tr class=tdbg>
+      <td width="64" height="30" align="right"><font class=tiaose>特别说明:</font></td>
+      <td width="593"><?php echo $tbsm; ?></td>
+	</tr>
 </table>
 <table width="680" border="0" cellspacing="0" cellpadding="0" style="TABLE-LAYOUT: fixed; WORD-BREAK: break-all;">
-<tr>
-<td class=tdbg2 style="font-size:10.3pt;line-height:200%;"><font class=tiaose ><b>旅游线路详细说明</b>：</font><font color="#000000"><?php echo badstr($content); ?></font></td>
-</tr>
+	<tr class=tdbg>
+		<td width="64"height="30" align="right"><font class=tiaose><b>注意事项</b>：</font></td>
+		<td width="593"><font color="#000000"><?php echo $content; ?></font></td>
+	</tr>
 </table>
 <br></td>
+
 <td align="center" valign="top" bgcolor="#FFFFFF" style="padding-top:5px;"><table width="184" border="0" cellpadding="0" cellspacing="3">
     <tr>
       <td width="15" bgcolor="#FFFF00" style="border:#ffcc00 1px solid;">&nbsp;</td>
@@ -327,22 +367,28 @@ echo '<br>截止报名日期到：'.date_format2($jzbmtime,'%Y-%m-%d %H:%M').'　'.getwee
       <td valign="bottom">　<font color="#999999">边框白色表示正式通过</font></td>
     </tr>
   </table>
+ <!-- 
 <?php
+/*
 $rttop1 = $db->query("SELECT clubid,flag,userid,nicknamesexgradephoto_s FROM ".__TBL_GROUP_CLUB_USER__." WHERE clubid=".$fid." ORDER BY flag DESC,id DESC");
 $totaltop1 = $db->num_rows($rttop1);
 if($totaltop1>0){
+*/
 ?>
 <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
 <tr>
 <?php
+/*
 for($j=1;$j<=$totaltop1;$j++) {
 $rowstop1 = $db->fetch_array($rttop1);
 if(!$rowstop1) break;
+*/
 ?>
 <td align="center" valign="top" bgcolor="#FFFFFF" style="padding-top:10px;"><table width="45" height="54" border="0" cellpadding="2" cellspacing="0" bgcolor="dddddd" style="margin-bottom:5px">
 <tr>
-<td height="50" align="center" <?php if ($rowstop1[1] == 0){echo "bgcolor=#ffff00";}else{echo "bgcolor=#ffffff";} ?> style="border:#<?php if ($rowstop1[1] == 0){echo "ffcc00";}else{echo "dddddd";} ?> 1px solid;"><a href="<?php echo $Global['home_2domain']; ?>/<?php echo $rowstop1[2]; ?>" target=_blank>
+<td height="50" align="center" <?php //if ($rowstop1[1] == 0){echo "bgcolor=#ffff00";}else{echo "bgcolor=#ffffff";} ?> style="border:#<?php if ($rowstop1[1] == 0){echo "ffcc00";}else{echo "dddddd";} ?> 1px solid;"><a href="<?php echo $Global['home_2domain']; ?>/<?php echo $rowstop1[2]; ?>" target=_blank>
 <?php 
+/*
 if (!empty($rowstop1[2])){
 $tmpusr = explode("|",$rowstop1[3]);
 $nicknameusr = $tmpusr[0];
@@ -354,34 +400,41 @@ if (empty($photo_susr)){
 echo "<img src=".$Global['www_2domain']."/images/noxpic".$sexusr.".gif width=41 height=50 border=0>";
 } else {
 echo "<img src=".$Global['up_2domain']."/photo/".$photo_susr." width=41 height=50 border=0>";
-}
+}*/
 ?>
 </a></td>
 </tr>
 </table>
-  <a href="<?php echo $Global['home_2domain']; ?>/<?php echo $rowstop1[2];?>" target=_blank><?php echo geticon($sexusr.$gradeusr).$nicknameusr;?></a></td>
-<?php if ($j % 3 == 0) {?>
+  <a href="<?php //echo $Global['home_2domain']; ?>/<?php //echo $rowstop1[2];?>" target=_blank><?php //echo geticon($sexusr.$gradeusr).$nicknameusr;?></a></td>
+<?php //if ($j % 3 == 0) {?>
 </tr>
 <tr>
-<?php } ?>
-<?php 	} ?>
+<?php //} ?>
+<?php 	//} ?>
 </tr>
 </table>
 <table width="200" height="33" border="0" cellpadding="0" cellspacing="0">
   <tr>
-    <td align="right"><b><font color="#FF6600">>></font></b> <a href="partyuser.php?fid=<?php echo $rowstop1[0];?>"><u><b>查看全部报名人数</b></u></a></td>
+    <td align="right"><b><font color="#FF6600">>></font></b> <a href="partyuser.php?fid=<?php //echo $rowstop1[0];?>"><u><b>查看全部报名人数</b></u></a></td>
   </tr>
 </table>
 <?php 
-} else {
+//} else {
 ?>
 <br><br>
-<font color="#999999">...暂时还没有人报名...</font><?php }?><br></td>
+<font color="#999999">...暂时还没有人报名...</font><?php //}?><br>
+ -->
+</td>
+
 </tr>
+
 </form>
-</table></td>
+</table>
+
+</td>
 </tr>
 </table>
+
 <table width="980" height="30" border="0" align="center" cellpadding="0" cellspacing="1" background="images/bkbg.gif">
   <tr>
     <td height="31" align="center" valign="bottom" style="padding:8px;"><table width="940" height="30" border="0" cellpadding="0" cellspacing="1" class=tdbg4 id="party_href">
@@ -410,7 +463,9 @@ if(!$rows) break;
 ?>
               <td width="960" align="center" valign="top" bgcolor="#FFFFFF"><table width="140" border="0" cellpadding="2" cellspacing="0" style="border:#dddddd 0px solid;">
                   <tr>
-                    <td align="center" bgcolor="#FFFFFF" style="border:#dddddd 1px solid;"><div class=photo140X105><a href="#" onClick="window.location.href='<?php echo $Global['www_2domain']; ?>/piczoom.php?picurl=<?php echo $Global['up_2domain']; ?>/photo/<?php echo  $rows['path_b']; ?>'"><img src=<?php echo $Global['up_2domain']; ?>/photo/<?php echo  $rows['path_s']; ?> alt="放大照片" border="0"></a></div></td>
+                    <td align="center" bgcolor="#FFFFFF" style="border:#dddddd 1px solid;">
+                    	<div class=photo140X105 style="CURSOR: hand;"><a target="_blank" onClick="window.location.href='<?php echo $Global['www_2domain']; ?>/piczoom.php?picurl=<?php echo $Global['up_2domain']; ?>/photo/<?php echo  $rows['path_b']; ?>'">
+                    	<img src=<?php echo $Global['up_2domain']; ?>/photo/<?php echo  $rows['path_s']; ?> alt="放大照片" border="0"></a></div></td>
                   </tr>
               </table></td>
               <?php if ($j % 5 == 0) {?>
