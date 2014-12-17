@@ -100,11 +100,11 @@ if(document.wrzc_netform.form_password.value==""){
 			<div class="top_login_c_rows">
 				<div class="top_login_c_rows1">”√ªß√˚£∫</div>
 				<div class="top_login_c_rows2">
-					<input name="form_username" value="wrzcnet" type="text"	class=top_login_input />
+					<input name="form_username" value="" type="text"	class=top_login_input />
 				</div>
 				<div class="top_login_c_rows3">√‹¬Î£∫</div>
 				<div class="top_login_c_rows4">
-					<input name="form_password" value="wrzcnet" type="password" class=top_login_input />
+					<input name="form_password" value="" type="password" class=top_login_input />
 				</div>
 				<div class="top_login_c_rows5">
 					<input name="stealth" type="checkbox" value="1" id=savepass />
