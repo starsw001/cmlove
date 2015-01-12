@@ -15,7 +15,7 @@
     <br/>
     版权所有<span>&copy;2010~2014</span> 　相约同行网 ( <span class=url>www.aileyou520.com</span> )
     <br/>
-    客服<span>QQ1：807562053 &nbsp;&nbsp;QQ2：2242397673 &nbsp;&nbsp;QQ3：2530543871</span> 　
+    客服<span>QQ1：3172349120 &nbsp;&nbsp;QQ2：3125428505 &nbsp;&nbsp;</span> 　
   	<br/>  
     电话：<span>021-55968315 4000801003</span>(正常上班时间) 传真：<span>021-55968352</span>　手机：<span>13916671001</span>
     <br/>
@@ -39,16 +39,18 @@
                         <tr>
                             <td align="middle" height="22">
                                 <font color="#a5846c">
-                                    <span class="css2">客服QQ:807562053</span>
-                                    <a target="blank" href="tencent://message/?uin=807562053&amp;Site=相约同行网客服为你服务&amp;Menu=yes"><img border="0" src="/qqonline.gif" alt="相约同行网客服为你服务" /></a>
-									<span class="css2">2242397673</span>
+                                    <span class="css2">客服QQ:3172349120</span>
+                                    <a target="blank" href="tencent://message/?uin=3172349120&amp;Site=相约同行网客服为你服务&amp;Menu=yes"><img border="0" src="/qqonline.gif" alt="相约同行网客服为你服务" /></a>
+									<span class="css2">3125428505</span>
                                     <font face=Verdana>
-                                        <a target=blank href=tencent://message/?uin=2242397673&Site=相约同行网客服为你服务&Menu=yes><img border="0" src=/qqonline.gif alt="相约同行网客服为你服务"></a>
+                                        <a target=blank href=tencent://message/?uin=3125428505&Site=相约同行网客服为你服务&Menu=yes><img border="0" src=/qqonline.gif alt="相约同行网客服为你服务"></a>
                                     </font>
+                                    <!-- 
 									<span class="css2">2530543871</span>
                                     <font face="Verdana">
                                         <a target="blank" href="tencent://message/?uin=2530543871&amp;Site=相约同行网客服为你服务&amp;Menu=yes"><img border="0" src="/qqonline.gif" alt="相约同行网客服为你服务" /></a>
                                     </font>
+                                     -->
                                     <br>
                                         联系我们  E-mail:<a href="mailto:jinlv@shkinglv.com">jinlv@shkinglv.com</a>
                             	</font>

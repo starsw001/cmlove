@@ -28,10 +28,18 @@ require_once wrzc_net.'sub/conn.php';
 <div class="main2">
 	<div class="box">
 		<div class="line1">关于<?php echo $Global['m_sitename']; ?></div>
-	    <div class="line2">	    　　<?php echo $Global['m_sitename'] ?>(<?php echo $Global['m_siteurl'] ?>)由广州网软志成创建于2000年12月15日，是广州公益性实名制诚信婚恋交友的发起者和倡导者，如果你正在苦苦寻觅你的爱情，<?php echo $Global['m_sitename'] ?>也许是你最好的选择，通过填写资料、提交证件及拍摄照片等验证身份备案，以确保给大家一个真正实名制交友平台。以组织联谊活动、网络自助交友、心理咨询等四大服务模式服务广州。<br />
-	    　　本站资料真实，全部采用人工审核制度，本地会员30多万，立足广州，面向广东，覆盖全国！提供征婚、婚介、速配、视频、约会、日记、聊天、相亲等交友服务，打破婚介交友传统方式，努力营造广州地区最专业的公益性实名制婚恋交友平台!<br />
-	    　　交友有网络，爱情更精彩，广州网软志成祝愿大家早日找到心中的Ta！<br />
+	    <div class="line2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $Global['m_sitename'];?>(<?php echo $Global['m_siteurl'] ?>)是首家以相亲、交友旅游为概念的大型交友旅游网站,
+	    专为同城的单身男女白领提供相亲交友服务,免费发布约会促成同城交友,坚持诚信相亲，
+	    所有交友信息都经过严格审核,为用户提供一个高品质的同城约会平台。找美女、帅哥约会,就来相约同行网站!
 	    <br />
+	    　　<?php echo $Global['m_sitename'] ?>(<?php echo $Global['m_siteurl'] ?>)与您相约今天,牵手未来;认认真真谈恋爱,实名认证相亲。实名认证、
+	    匿名相亲、相亲更放心、成熟男女相亲，注册相约同行网，一起告别单身!专为单身人士相亲平台.火爆的异性相亲网站.同城寂寞男女相亲好选择,同城速配相亲.
+	    <br />
+	    　　<?php echo $Global['m_sitename'] ?>(<?php echo $Global['m_siteurl'] ?>)高端相亲网专为白领等高端精英人士提供婚介服务，交友的专业机构，VIP的一对一服务!
+	    <br />
+	    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;钱钟书先生在《围城》写：经过长期苦旅而彼此不讨厌的人,才可以结交作朋友。朋友如此，伴侣就更需要这样！旅行是检验一个人是否适合做伴侣的方式；
+	    旅行是检验合适不合适的有效途径；世界很美丽，时间很短暂，抓住现实的精彩，开启精彩的美尔旅行生活吧！
+		<br />
 	  </div>
 	</div>
 	<div class="clear"></div>
