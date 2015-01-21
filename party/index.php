@@ -92,7 +92,7 @@ $t=!ereg("^[1-5]{1}$",$t)?1:$t;
 		case 5:$k  = trimm($k);$tmpsubsql = " title LIKE '%".$k."%' AND ";$tmpsort   = " ORDER BY id DESC";break;
 		default:$tmpsubsql = "";$tmpsort   = " ORDER BY id DESC";break;
 	}
-	$sql = "SELECT id,title,hdtime,address,num_n,num_r,flag,jzbmtime,bmnum,ifjh,picurl_s,kind FROM ".__TBL_GROUP_CLUB__." WHERE $tmpsubsql flag>0 $tmpsort";
+	$sql = "SELECT id,title,hdtime,address,num_n,num_r,flag,jzbmtime,bmnum,ifjh,picurl_s,kind,supplier FROM ".__TBL_GROUP_CLUB__." WHERE $tmpsubsql flag>0 $tmpsort";
 	$rt=$db->query($sql);
 	if (!$db->num_rows($rt)){
 		echo '<h6>暂无信息</h6>';
@@ -128,6 +128,7 @@ $t=!ereg("^[1-5]{1}$",$t)?1:$t;
 			$picurl_s = $rows[10];
 			$picurl_s = empty($picurl_s)?'·暂无主照片·':'<img src='.$Global['up_2domain'].'/photo/'.$picurl_s.'>';
 			$kind = $rows[11];
+			$supplier = $rows[12];
 			$d1  = strtotime("now");
 			$d2  = strtotime($jzbmtime);
 			$totals  = ($d2-$d1);
@@ -156,6 +157,7 @@ $t=!ereg("^[1-5]{1}$",$t)?1:$t;
 			<div class="PR">
 				<div class="pr1" title="<?php echo $hdtime; ?>">时间：周末<?php //echo $hdtime; ?></div>
 				<div class="pr2">成团：50 人<?php //echo $address; ?></div>
+				<div class="pr3">供应商：<?php echo !empty($supplier)?$supplier:"暂无";?></div>
 				<!-- 
 				<div class="pr3">邀请 <?php //echo $yqnum; ?>　已报名 <?php //echo $bmnum; ?> 人</div>
 				 -->

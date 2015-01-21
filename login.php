@@ -300,7 +300,7 @@ function window_onload(){
 					<div class="line1">
 						<div class="left">用户名：</div>
 						<div class="center">
-							<input name="form_username" type="text" value="wrzcnet"
+							<input name="form_username" type="text" value=""
 								class="input" value="<?php echo $cook_username; ?>"
 								maxlength="12" />
 						</div>
@@ -314,7 +314,7 @@ function window_onload(){
 					<div class="line1">
 						<div class="left">密 码：</div>
 						<div class="center">
-							<input name="form_password" value="wrzcnet" type="password"
+							<input name="form_password" value="" type="password"
 								class="input" maxlength="20" />
 						</div>
 						<div class="right" title="点此找回密码，系统会自动把密码发送您注册时的邮箱">
