@@ -28,7 +28,9 @@ require_once wrzc_net.'sub/conn.php';
 <div class="main2">
 	<div class="box">
 		<div class="line1">关于<?php echo $Global['m_sitename']; ?></div>
-	    <div class="line2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $Global['m_sitename'];?>(<?php echo $Global['m_siteurl'] ?>)是首家以相亲、交友旅游为概念的大型交友旅游网站,
+	    <div class="line2">
+	    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;相约同行网隶属于上海金旅国际旅行社有限公司<br />
+	    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $Global['m_sitename'];?>(<?php echo $Global['m_siteurl'] ?>)是首家以相亲、交友旅游为概念的大型交友旅游网站,
 	    专为同城的单身男女白领提供相亲交友服务,免费发布约会促成同城交友,坚持诚信相亲，
 	    所有交友信息都经过严格审核,为用户提供一个高品质的同城约会平台。找美女、帅哥约会,就来相约同行网站!
 	    <br />
